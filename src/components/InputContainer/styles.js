@@ -3,7 +3,9 @@ import { maxWidth } from "@styles/base/breakpoints";
 
 export default styled.div`
   position: relative;
+  width: 100%;
   margin-bottom: 12px;
+  border-radius: 8px;
 
   &:last-of-type {
     margin-bottom: 24px;
@@ -26,12 +28,21 @@ export default styled.div`
     }
   }
 
+  &.no-margin {
+    margin-bottom: 0;
+  }
+
+  &.with-inside-button {
+    input {
+      padding-right: 60px;
+    }
+  }
+
   input {
     width: 100%;
     height: 40px;
     padding: 0px 12px;
-    background-color: ${({ theme }) => theme.colors.primary.lighter};
-    border: 2px solid rgba(0, 0, 0, 0.1);
+    background-color: ${({ theme }) => theme.colors.lighter};    border: 2px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     font-weight: 300;
 
@@ -53,6 +64,12 @@ export default styled.div`
         text-transform: capitalize;
       }
     }
+  }
+
+  .inside-button {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 
   .error-message {

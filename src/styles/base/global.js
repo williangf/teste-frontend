@@ -18,16 +18,14 @@ export default createGlobalStyle`
   }
 
   body {
-    font-size: 16px;
     height: 100%;
     background-color: ${({ theme }) => theme.colors.light};
+    font-size: 16px;
   }
 
   .row {
     width: 100%;
-    height: 100%;
     max-width: 1240px;
-    padding: 0px 12px;
   }
 
   .fade {
