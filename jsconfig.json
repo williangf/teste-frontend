@@ -22,9 +22,9 @@
       "@hooks/*": ["hooks/*"],
       "@styles/*": ["styles/*"],
       "@assets/*": ["assets/*"],
-      "@configs/*": ["configs/*"],
       "@services/*": ["services/*"],
       "@contexts/*": ["contexts/*"],
+      "@constants/*": ["constants/*"],
       "@components/*": ["components/*"]
     }
   },
