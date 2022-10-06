@@ -8,3 +8,16 @@ export const fadeAnimation = keyframes`
     opacity: 1;
   }
 `;
+
+export const moveUpAnimation = keyframes`
+  0% {
+    top: 0;
+    bottom: 0;
+    transform: rotateX(45deg);
+  }
+  100% {
+    top: 148px;
+    bottom: 100%;
+    transform: rotateX(0deg);
+  }
+`;

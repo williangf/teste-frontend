@@ -9,6 +9,8 @@ const InputContainer = ({
   name,
   label,
   disabled,
+  noMargin,
+  insideButton,
   ...rest
 }) => {
   return (
@@ -17,6 +19,8 @@ const InputContainer = ({
         "input-valid": dirtyField && !error && !disabled,
         "input-error": error && touchedField && !disabled,
         "input-disabled": disabled,
+        "no-margin": noMargin,
+        "with-inside-button": insideButton,
       })}
     >
       {label && <label htmlFor={name}>
@@ -29,6 +33,9 @@ const InputContainer = ({
         disabled={disabled}
         {...rest}
       />
+      {insideButton && <div className="inside-button">
+        {insideButton}
+      </div>}
       {error?.message && !disabled && touchedField && (
         <span className="error-message">
           {error.message}
