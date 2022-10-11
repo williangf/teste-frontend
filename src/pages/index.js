@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { getSession } from "next-auth/react";
-import { useVideos } from "@contexts/videos";
+import { useVideosSearch } from "@contexts/videosSearch";
 import { useScroll } from "@contexts/scroll";
 import usePageBottom from "@hooks/usePageBottom";
 import VideosService from "@services/VideosService";
@@ -16,8 +16,15 @@ export default function Home() {
   const isPageBottom = usePageBottom();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
-  const { videos, setVideos, videosList, setVideosList } = useVideos();
+  const {
+    searchTerm,
+    setSearchTerm,
+    videos,
+    setVideos,
+    videosList,
+    setVideosList,
+    resetSearch,
+  } = useVideosSearch();
   const { scrollPosition, scrollToSavedPosition } = useScroll();
 
   const loadVideos = useCallback(async (searchTerm, nextPageToken) => {
@@ -28,6 +35,7 @@ export default function Home() {
 
       setVideos(videos);
       setVideosList((prevState) => [...prevState, ...videos.items]);
+      setError("");
     } catch (error) {
       setError("Houve um erro ao carregar os vídeos");
     } finally {
@@ -40,33 +48,45 @@ export default function Home() {
   }, [scrollPosition, scrollToSavedPosition]);
 
   useEffect(() => {
-    if (searchTerm) loadVideos(searchTerm);
-  }, [searchTerm, loadVideos]);
-
-  useEffect(() => {
-    if (videos && videos.nextPageToken && isPageBottom && !isLoading) {
+    if (videos && videos.nextPageToken && isPageBottom && !isLoading && !error) {
       loadVideos(searchTerm, videos.nextPageToken);
     }
-  }, [isPageBottom, searchTerm, videos, loadVideos, isLoading]);
+  }, [isPageBottom, searchTerm, videos, loadVideos, isLoading, error]);
+
+  function updateSearchTerm(newSearchTerm) {
+    if (!newSearchTerm || newSearchTerm === searchTerm) return false;
+
+    resetSearch();
+    loadVideos(newSearchTerm);
+    setSearchTerm(newSearchTerm);
+  }
 
   return (
     <PageContainer title="Home">
-      <Container>
+      <Container isSearchTermFilled={!!searchTerm || !!videosList.length}>
         <SearchBar
           isLoading={isLoading}
-          setSearchTerm={setSearchTerm}
           isSearchTermFilled={!!searchTerm || !!videosList.length}
+          updateSearchTerm={updateSearchTerm}
         />
         {error && !isLoading && (
-          <div className="videos-list-error fade">
+          <div className="videos-list-message fade">
             <DisplayMessage
-              message="Houve um erro na pesquisa"
+              message={error}
               icon={<TbMoodSad size={124} />}
             />
           </div>
         )}
-        {videosList && (
-          <div className="videos-list fade row">
+        {!error && videos && videosList.length === 0 && !isLoading && (
+          <div className="videos-list-message fade">
+            <DisplayMessage
+              message={"Não encontramos vídeos com o termo buscado"}
+              icon={<TbMoodSad size={124} />}
+            />
+          </div>
+        )}
+        {!error && (videosList.length || isLoading) > 0 && (
+          <div className="videos-list row">
             {videosList.map((video, index) => (
               <VideoCard key={video.id.videoId + index} videoData={video} />
             ))}

@@ -1,4 +1,4 @@
-import { VideosProvider } from "./videos";
+import { VideosProvider } from "./videosSearch";
 import { ScrollProvider } from "./scroll";
 
 const AppProvider = ({ children }) => (

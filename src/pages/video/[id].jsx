@@ -24,8 +24,9 @@ export default function VideoDetails() {
         const videoDetails = await VideosService.getVideo(videoId);
 
         setVideoDetails(videoDetails);
+        setError("");
       } catch (error) {
-        setError("Houve um erro ao carrega o vídeo");
+        setError("Houve um erro ao pesquisar o vídeo");
       } finally {
         setIsLoading(false);
       }
@@ -35,7 +36,7 @@ export default function VideoDetails() {
   }, [videoId]);
 
   return (
-    <PageContainer title={videoDetails?.items[0]?.snippet.title || 'Erro'}>
+    <PageContainer title={videoDetails?.items[0]?.snippet.title}>
       <Container>
         <div className="top-container">
           <Link href="/">
@@ -48,7 +49,7 @@ export default function VideoDetails() {
         </div>
         {isLoading && <Loading bigger />}
         {!isLoading && error && <DisplayMessage
-          message="Houve um erro na pesquisa"
+          message={error}
           icon={<TbMoodSad size={124} />}
         />}
         {!isLoading && videoDetails?.items.length === 0 && <DisplayMessage
@@ -71,7 +72,7 @@ export default function VideoDetails() {
               </p>
               <div className="video-likes">
                 <TbThumbUp size={24} />
-                {videoDetails.items[0].statistics.likeCount}
+                {videoDetails.items[0].statistics?.likeCount}
               </div>
             </div>
             <div className="description">
@@ -81,7 +82,7 @@ export default function VideoDetails() {
             </div>
             <div className="video-views">
               <span>
-                {`${videoDetails.items[0].statistics.viewCount} visualizações`}
+                {`${videoDetails.items[0].statistics?.viewCount} visualizações`}
               </span>
             </div>
           </div>
