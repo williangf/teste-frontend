@@ -1,4 +1,5 @@
 import Head from "next/head";
+import PropTypes from "prop-types";
 import Header from "@components/Header";
 import Container from "./styles";
 
@@ -20,3 +21,9 @@ const PageContainer = ({
 };
 
 export default PageContainer;
+
+PageContainer.propTypes = {
+  title: PropTypes.string,
+  header: PropTypes.bool,
+  children: PropTypes.node,
+};

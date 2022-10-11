@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import classNames from "classnames";
+import PropTypes from "prop-types";
+import FORM_VALIDATIONS from "@constants/formValidations";
 import InputContainer from "@components/InputContainer";
 import Button from "@components/Button";
-import FORM_VALIDATIONS from "@constants/formValidations";
 import Container from "./styles";
 import { TbSearch } from "react-icons/tb";
 
@@ -50,3 +50,9 @@ export default function SearchBar({
     </Container>
   )
 }
+
+SearchBar.propTypes = {
+  isLoading: PropTypes.bool,
+  setSearchTerm: PropTypes.func,
+  isSearchTermFilled: PropTypes.bool,
+};

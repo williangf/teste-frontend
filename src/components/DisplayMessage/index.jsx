@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Container from "./styles";
 
 export default function DisplayMessage({ message, icon }) {
@@ -8,3 +9,8 @@ export default function DisplayMessage({ message, icon }) {
     </Container>
   )
 }
+
+DisplayMessage.propTypes = {
+  message: PropTypes.string.isRequired,
+  icon: PropTypes.element,
+};

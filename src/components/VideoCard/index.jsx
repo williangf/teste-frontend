@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 import { useScroll } from "@contexts/scroll";
 import Button from "@components/Button";
@@ -40,3 +40,7 @@ export default function VideoCard({ videoData }) {
     </Container>
   )
 }
+
+VideoCard.propTypes = {
+  videoData: PropTypes.object,
+};

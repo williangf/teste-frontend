@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import PropTypes from "prop-types";
 import Container from "./styles";
 
 const InputContainer = ({
@@ -46,3 +47,15 @@ const InputContainer = ({
 };
 
 export default InputContainer;
+
+InputContainer.propTypes = {
+  register: PropTypes.object.isRequired,
+  error: PropTypes.object,
+  touchedField: PropTypes.bool,
+  dirtyField: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  disabled: PropTypes.bool,
+  noMargin: PropTypes.bool,
+  insideButton: PropTypes.object,
+};
