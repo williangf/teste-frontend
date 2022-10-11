@@ -2,16 +2,20 @@ import App from "next/app";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "styled-components";
 
+import AppProvider from "@contexts/index";
+
 import BaseStyle from "@styles/index";
 import defaultTheme from "@styles/themes/default";
 
 function AppContainer({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
-      <ThemeProvider theme={{ ...defaultTheme }}>
-        <BaseStyle />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <AppProvider>
+        <ThemeProvider theme={{ ...defaultTheme }}>
+          <BaseStyle />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </AppProvider>
     </SessionProvider>
   );
 }
