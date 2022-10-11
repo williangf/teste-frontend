@@ -8,17 +8,29 @@ class VideosService {
     this.restService = new RestService(url);
   }
 
-  async getVideos(searchTerm) {
-    const { data } = await this.restService.get("", {
+  async getVideos(searchTerm, nextPageToken) {
+    const { data } = await this.restService.get("/search", {
       params: {
         key,
         part: "id,snippet",
         q: searchTerm,
         maxResults: 10,
+        pageToken: nextPageToken,
+        type: "video",
       },
     });
 
-    console.log(123, data);
+    return data;
+  }
+
+  async getVideo(videoId) {
+    const { data } = await this.restService.get("/videos", {
+      params: {
+        key,
+        part: "snippet,statistics",
+        id: videoId,
+      },
+    });
 
     return data;
   }
