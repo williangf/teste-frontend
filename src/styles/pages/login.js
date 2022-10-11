@@ -5,6 +5,7 @@ export default styled.main`
   align-items: center;
   justify-content: center;
   height: 100%;
+  width: 100%;
 
   .login-container {
     width: 100%;

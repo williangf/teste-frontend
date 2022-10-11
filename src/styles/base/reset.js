@@ -32,4 +32,12 @@ export default createGlobalStyle`
     border: none;
     outline: 0;
   }
+
+  pre {
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
 `;
