@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { fadeAnimation, shimmer } from "@styles/base/animations";
+import { shimmer } from "@styles/base/animations";
 import { maxWidth } from "@styles/base/breakpoints";
 
 export default styled.div`
@@ -7,14 +7,11 @@ export default styled.div`
   width: 100%;
   height: 420px;
   min-width: 240px;
-  max-width: calc(20%);
+  max-width: calc(20% - 8px);
   background-color: ${({ theme }) => theme.colors.lighter};
   border-radius: 8px;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  animation: ${fadeAnimation} 0.2s ease-in-out forwards;
-  animation-delay: 0.6s;
-  opacity: 0;
 
   ${({ bigger }) =>
     bigger &&
@@ -23,8 +20,8 @@ export default styled.div`
       height: 680px;
     `};
 
-  ${maxWidth.xl`
-    max-width: calc(25%);
+    ${maxWidth.lg`
+    max-width: calc(33% - 12px);
   `}
 
   ${maxWidth.md`
@@ -32,7 +29,7 @@ export default styled.div`
   `}
 
   ${maxWidth.xs`
-    max-width: 100%;
+    max-width: calc(100% - 12px);
   `}
 
   .shimmer-animation {

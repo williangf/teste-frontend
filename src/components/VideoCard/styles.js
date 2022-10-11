@@ -28,7 +28,7 @@ export default styled.div`
   `}
 
   ${maxWidth.xs`
-    max-width: calc(100% - 12px);
+    max-width: calc(100% - 6px);
   `}
 
   .video-title, .channel-title {
