@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import PropTypes from "prop-types";
+import { useVideosSearch } from "@contexts/videosSearch";
 import FORM_VALIDATIONS from "@constants/formValidations";
 import InputContainer from "@components/InputContainer";
 import Button from "@components/Button";
@@ -8,19 +9,23 @@ import { TbSearch } from "react-icons/tb";
 
 export default function SearchBar({
   isLoading,
-  setSearchTerm,
   isSearchTermFilled,
+  updateSearchTerm,
 }) {
+  const { searchTerm } = useVideosSearch();
   const {
     register,
     handleSubmit,
     formState: { errors, dirtyFields, touchedFields },
   } = useForm({
     mode: "onSubmit",
+    defaultValues: {
+      searchTerm
+    }
   });
 
   async function onSubmitHandler(data) {
-    setSearchTerm(data.searchTerm);
+    updateSearchTerm(data.searchTerm);
   }
 
   return (
@@ -53,6 +58,5 @@ export default function SearchBar({
 
 SearchBar.propTypes = {
   isLoading: PropTypes.bool,
-  setSearchTerm: PropTypes.func,
   isSearchTermFilled: PropTypes.bool,
 };

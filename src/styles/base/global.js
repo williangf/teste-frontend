@@ -23,6 +23,10 @@ export default createGlobalStyle`
     font-size: 16px;
   }
 
+  iframe {
+    background-color: black;
+  }
+
   .row {
     width: 100%;
     max-width: 1240px;

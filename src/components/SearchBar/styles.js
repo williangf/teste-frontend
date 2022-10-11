@@ -10,6 +10,7 @@ export default styled.div`
   display: flex;
   justify-content: center;
   transition: 1s;
+  z-index: 5;
 
   ${({ isSearchTermFilled }) => isSearchTermFilled && css`
     animation: ${moveUpAnimation} 0.8s ease-in-out forwards;
