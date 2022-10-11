@@ -21,3 +21,12 @@ export const moveUpAnimation = keyframes`
     transform: rotateX(0deg);
   }
 `;
+
+export const shimmer = keyframes`
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+`;
