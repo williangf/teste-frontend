@@ -42,7 +42,8 @@ export default styled.div`
     width: 100%;
     height: 40px;
     padding: 0px 12px;
-    background-color: ${({ theme }) => theme.colors.lighter};    border: 2px solid rgba(0, 0, 0, 0.1);
+    background-color: ${({ theme }) => theme.colors.lighter};
+    border: 2px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     font-weight: 300;
 
