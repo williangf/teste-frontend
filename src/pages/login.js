@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import PageContainer from "@components/PageContainer";
 import InputContainer from "@components/InputContainer";
 import Button from "@components/Button";
+import FORM_VALIDATIONS from "@constants/formValidations";
 import Container from "@styles/pages/login";
 import { TbVideo } from "react-icons/tb";
 
@@ -13,7 +14,7 @@ export default function Login() {
     register,
     handleSubmit,
     setError,
-    formState: { errors, dirtyFields, touchedFields, isValid },
+    formState: { errors, dirtyFields, touchedFields },
   } = useForm({
     mode: "onBlur",
   });
@@ -25,7 +26,7 @@ export default function Login() {
 
     try {
       await signIn("credentials", {
-        callbackUrl: '/',
+        callbackUrl: "/",
         username,
         email,
       });
@@ -42,7 +43,7 @@ export default function Login() {
   return (
     <PageContainer title="Login" header={false}>
       <Container>
-        <div className="login-container">
+        <div className="login-container fade">
           <TbVideo className="logo" size={72} />
           <form
             className="login-form"
@@ -50,13 +51,7 @@ export default function Login() {
             noValidate
           >
             <InputContainer
-              register={register("username", {
-                required: "Campo obrigatório",
-                maxLength: {
-                  value: 30,
-                  message: "Número máximo de caracteres atingido"
-                },
-              })}
+              register={register("username", FORM_VALIDATIONS.username)}
               error={errors.username}
               touchedField={touchedFields.username}
               dirtyField={dirtyFields.username}
@@ -65,17 +60,7 @@ export default function Login() {
               placeholder="Nome do usuário"
             />
             <InputContainer
-              register={register("email", {
-                required: "Campo obrigatório",
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Email inválido"
-                },
-                maxLength: {
-                  value: 50,
-                  message: "Número máximo de caracteres atingido"
-                },
-              })}
+              register={register("email", FORM_VALIDATIONS.email)}
               error={errors.email}
               touchedField={touchedFields.email}
               dirtyField={dirtyFields.email}
