@@ -6,13 +6,17 @@ import FORM_VALIDATIONS from "@constants/formValidations";
 import Container from "./styles";
 import { TbSearch } from "react-icons/tb";
 
-export default function SearchBar({ setSearchTerm, isSearchTermFilled }) {
+export default function SearchBar({
+  isLoading,
+  setSearchTerm,
+  isSearchTermFilled,
+}) {
   const {
     register,
     handleSubmit,
     formState: { errors, dirtyFields, touchedFields },
   } = useForm({
-    mode: "onBlur",
+    mode: "onSubmit",
   });
 
   async function onSubmitHandler(data) {
@@ -35,13 +39,13 @@ export default function SearchBar({ setSearchTerm, isSearchTermFilled }) {
           type="text"
           placeholder="Pesquisar"
           noMargin
+          disabled={isLoading}
           insideButton={
-            <Button type="submit">
+            <Button type="submit" disabled={isLoading}>
               <TbSearch size={24} />
             </Button>
           }
         />
-
       </form>
     </Container>
   )
