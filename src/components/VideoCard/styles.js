@@ -5,12 +5,13 @@ export default styled.div`
   display: flex;
   flex-direction: column;
   padding: 12px;
-  max-width: calc(20%);
   background-color: ${({ theme }) => theme.colors.lighter};
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   transition: box-shadow 0.2s;
+  width: 100%;
+  max-width: calc(20% - 8px);
 
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
@@ -18,8 +19,8 @@ export default styled.div`
       rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   }
 
-  ${maxWidth.xl`
-    max-width: calc(25%);
+  ${maxWidth.lg`
+    max-width: calc(33% - 12px);
   `}
 
   ${maxWidth.md`
@@ -27,7 +28,7 @@ export default styled.div`
   `}
 
   ${maxWidth.xs`
-    max-width: 100%;
+    max-width: calc(100% - 12px);
   `}
 
   .video-title, .channel-title {
