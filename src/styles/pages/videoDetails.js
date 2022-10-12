@@ -18,7 +18,6 @@ export default styled.div`
     width: 100%;
     max-width: 780px;
     padding: 12px;
-    margin: 0px 12px;
 
     .video-title {
       background-color: ${({ theme }) => theme.colors.lighter};

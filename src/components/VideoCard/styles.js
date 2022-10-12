@@ -12,6 +12,7 @@ export default styled.div`
   transition: box-shadow 0.2s;
   width: 100%;
   max-width: calc(20% - 8px);
+  min-height: 420px;
 
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,

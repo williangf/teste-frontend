@@ -12,9 +12,17 @@ export default styled.div`
   transition: 1s;
   z-index: 5;
 
-  ${({ isSearchTermFilled }) => isSearchTermFilled && css`
-    animation: ${moveUpAnimation} 0.8s ease-in-out forwards;
-  `}
+  ${({ isSearchTermFilled }) =>
+    isSearchTermFilled &&
+    css`
+      animation: ${moveUpAnimation} 0.8s ease-in-out forwards;
+    `}
+
+  ${({ hasVideosLoaded }) =>
+    hasVideosLoaded &&
+    css`
+      animation-duration: 0s;
+    `}
 
   .search-form {
     display: flex;

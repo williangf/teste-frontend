@@ -20,7 +20,11 @@ class VideosService {
       },
     });
 
-    return data;
+    return {
+      etag: data.etag,
+      items: data.items,
+      nextPageToken: data.nextPageToken,
+    };
   }
 
   async getVideo(videoId) {

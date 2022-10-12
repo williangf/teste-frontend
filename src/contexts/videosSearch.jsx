@@ -3,24 +3,17 @@ import { createContext, useState, useContext } from 'react';
 const VideosContext = createContext({});
 
 const VideosProvider = ({ children }) => {
-  const [videos, setVideos] = useState(null);
-  const [videosList, setVideosList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
-  function resetSearch() {
-    setVideos(null);
-    setVideosList([]);
-  }
+  const [videosResult, setVideosResult] = useState({
+    items: []
+  });
 
   return (
     <VideosContext.Provider value={{
       searchTerm,
       setSearchTerm,
-      videos,
-      setVideos,
-      videosList,
-      setVideosList,
-      resetSearch,
+      videosResult,
+      setVideosResult,
     }}>
       {children}
     </VideosContext.Provider>

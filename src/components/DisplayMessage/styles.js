@@ -5,6 +5,8 @@ export default styled.div`
   flex-direction: column;
   align-items: center;
   color: ${({ theme }) => theme.colors.primary};
+  text-align: center;
+  padding: 0px 12px;
 
   & > svg {
     margin-bottom: 12px;

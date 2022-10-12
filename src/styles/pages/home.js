@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { fadeAnimation } from "@styles/base/animations";
 
 export default styled.main`
@@ -11,9 +11,14 @@ export default styled.main`
   .videos-list {
     display: flex;
     justify-content: center;
-    animation: ${fadeAnimation} 0.2s ease-in-out forwards;
-    animation-delay: 0.6s;
+    animation: ${fadeAnimation} 0.4s ease-in-out forwards;
     opacity: 0;
+
+    ${({ initialPosition }) =>
+      initialPosition &&
+      css`
+        animation: none;
+      `}
   }
 
   .videos-list {
@@ -24,5 +29,6 @@ export default styled.main`
     padding: 0px 12px;
     gap: 12px;
     width: 100%;
+    height: min-content;
   }
 `;

@@ -10,6 +10,7 @@ import { TbSearch } from "react-icons/tb";
 export default function SearchBar({
   isLoading,
   isSearchTermFilled,
+  hasVideosLoaded,
   updateSearchTerm,
 }) {
   const { searchTerm } = useVideosSearch();
@@ -29,7 +30,10 @@ export default function SearchBar({
   }
 
   return (
-    <Container isSearchTermFilled={isSearchTermFilled}>
+    <Container
+      isSearchTermFilled={isSearchTermFilled}
+      hasVideosLoaded={hasVideosLoaded}
+    >
       <form
         className="search-form"
         onSubmit={handleSubmit(onSubmitHandler)}
@@ -59,4 +63,5 @@ export default function SearchBar({
 SearchBar.propTypes = {
   isLoading: PropTypes.bool,
   isSearchTermFilled: PropTypes.bool,
+  hasVideosLoaded: PropTypes.bool,
 };

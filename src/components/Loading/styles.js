@@ -20,7 +20,7 @@ export default styled.div`
       height: 680px;
     `};
 
-    ${maxWidth.lg`
+  ${maxWidth.lg`
     max-width: calc(33% - 12px);
   `}
 

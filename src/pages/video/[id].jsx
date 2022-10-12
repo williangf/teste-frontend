@@ -4,10 +4,10 @@ import { useRouter } from "next/router";
 import VideosService from "@services/VideosService";
 import PageContainer from "@components/PageContainer";
 import Button from "@components/Button";
-import Container from "@styles/pages/videoDetails";
-import { TbArrowBackUp, TbMoodSad, TbThumbUp } from "react-icons/tb";
 import DisplayMessage from "@components/DisplayMessage";
 import Loading from "@components/Loading";
+import Container from "@styles/pages/videoDetails";
+import { TbArrowBackUp, TbMoodSad, TbThumbUp } from "react-icons/tb";
 
 export default function VideoDetails() {
   const router = useRouter();
@@ -36,7 +36,7 @@ export default function VideoDetails() {
   }, [videoId]);
 
   return (
-    <PageContainer title={videoDetails?.items[0]?.snippet.title}>
+    <PageContainer title={videoDetails?.items[0]?.snippet.title || error}>
       <Container>
         <div className="top-container">
           <Link href="/">
